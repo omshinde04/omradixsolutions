@@ -2,6 +2,8 @@
 
 import { notFound } from "next/navigation";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
 
 const projectDetails = {
   1: {
@@ -18,7 +20,7 @@ const projectDetails = {
     image: "/images/work2.jpg",
     technologies: ["Vue", "Firebase", "TailwindCSS"],
   },
-  // ...same as before
+  // ... same as before
 };
 
 export default function ProjectDetails({ params }) {
@@ -59,10 +61,13 @@ export default function ProjectDetails({ params }) {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9 }}
         >
-          <img
+          <Image
             src={project.image}
             alt={project.title}
-            className="w-full h-96 md:h-[32rem] object-cover transform hover:scale-105 transition duration-700"
+            width={800}
+            height={600}
+            className="w-full h-96 md:h-[32rem] object-cover transform hover:scale-105 transition duration-700 rounded-3xl"
+            priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
         </motion.div>
@@ -104,14 +109,16 @@ export default function ProjectDetails({ params }) {
 
           {/* CTAs */}
           <div className="flex flex-wrap gap-6">
-            <a
+            <Link
               href="/projects"
               className="px-8 py-3 bg-[#458DC8] text-white rounded-xl font-semibold shadow-lg hover:bg-[#326FA1] transition transform hover:scale-105"
             >
               ← Back to Projects
-            </a>
+            </Link>
             <a
               href="#"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-8 py-3 bg-[#FFBA37] text-black rounded-xl font-semibold shadow-lg hover:bg-[#FC803A] transition transform hover:scale-105"
             >
               🚀 View Live Demo
