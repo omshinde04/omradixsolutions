@@ -1,5 +1,6 @@
 import "./globals.css";
-import Navbar from "../components/Navbar.js";
+import Navbar from "../components/Navbar";
+
  // ✅ adjust path if different
 
 export const metadata = {
