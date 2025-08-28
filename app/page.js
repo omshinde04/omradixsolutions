@@ -1,14 +1,15 @@
-import Hero from "../components/Hero.js";
-import ServicesSection from "../components/ServicesSection.js";
-import About from "../components/About.js";
-import WhoWeAre from "../components/WhoWeAre.js";
-import Works from "../components/Works.js";
-import Testimonial from "../components/Testimonial.js";
-import Faq from "../components/Faq.js";
-import Team from "../components/Team.js";
-import Contact from "../components/Contact.js";
-import Blog from "../components/Blog.js";
-import Footer from "../components/Footer.js";
+import Hero from "../components/Hero";
+import ServicesSection from "../components/ServicesSection";
+import About from "../components/About";
+import WhoWeAre from "../components/WhoWeAre";
+import Works from "../components/Works";
+import Testimonial from "../components/Testimonial";
+import Faq from "../components/Faq";
+import Team from "../components/Team";
+import Contact from "../components/Contact";
+import Blog from "../components/Blog";
+import Footer from "../components/Footer";
+
 
 
 export default function Home() {
