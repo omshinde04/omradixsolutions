@@ -1,3 +1,4 @@
+import Navbar from "../components/Navbar.js";
 import Hero from "../components/Hero.js";
 import ServicesSection from "../components/ServicesSection.js";
 import About from "../components/About.js";
@@ -9,7 +10,7 @@ import Team from "../components/Team.js";
 import Contact from "../components/Contact.js";
 import Blog from "../components/Blog.js";
 import Footer from "../components/Footer.js";
-import Navbar from "../components/Navbar.js";
+
 
 export default function Home() {
   return (
