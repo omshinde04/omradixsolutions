@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import Link from "next/link"; // ✅ Import Next.js Link
 
 export default function Footer() {
   return (
@@ -29,11 +30,31 @@ export default function Footer() {
         >
           <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
           <ul className="space-y-2 text-gray-400">
-            <li><a href="/" className="hover:text-white transition">Home</a></li>
-            <li><a href="#about" className="hover:text-white transition">About</a></li>
-            <li><a href="#services" className="hover:text-white transition">Services</a></li>
-            <li><a href="#blog" className="hover:text-white transition">Blogs</a></li>
-            <li><a href="#contact" className="hover:text-white transition">Contact</a></li>
+            <li>
+              <Link href="/" className="hover:text-white transition">
+                Home
+              </Link>
+            </li>
+            <li>
+              <a href="#about" className="hover:text-white transition">
+                About
+              </a>
+            </li>
+            <li>
+              <a href="#services" className="hover:text-white transition">
+                Services
+              </a>
+            </li>
+            <li>
+              <a href="#blog" className="hover:text-white transition">
+                Blogs
+              </a>
+            </li>
+            <li>
+              <a href="#contact" className="hover:text-white transition">
+                Contact
+              </a>
+            </li>
           </ul>
         </motion.div>
 
@@ -79,16 +100,34 @@ export default function Footer() {
 
           {/* Social Links */}
           <div className="flex gap-4 mt-6">
-            <motion.a whileHover={{ scale: 1.2 }} href="#" className="text-gray-400 hover:text-white">
+            <motion.a
+              whileHover={{ scale: 1.2 }}
+              href="#"
+              className="text-gray-400 hover:text-white"
+            >
               <Facebook size={22} />
             </motion.a>
-            <motion.a whileHover={{ scale: 1.2 }} href="#" className="text-gray-400 hover:text-white">
+            <motion.a
+              whileHover={{ scale: 1.2 }}
+              href="#"
+              className="text-gray-400 hover:text-white"
+            >
               <Twitter size={22} />
             </motion.a>
-            <motion.a whileHover={{ scale: 1.2 }} href="#" className="text-gray-400 hover:text-white">
+            <motion.a
+              whileHover={{ scale: 1.2 }}
+              href="#"
+              className="text-gray-400 hover:text-white"
+            >
               <Linkedin size={22} />
             </motion.a>
-            <motion.a whileHover={{ scale: 1.2 }} href="https://www.instagram.com/omradix_solutions?igsh=MWY1MmQxOWxwMzFq&utm_source=qr" className="text-gray-400 hover:text-white">
+            <motion.a
+              whileHover={{ scale: 1.2 }}
+              href="https://www.instagram.com/omradix_solutions?igsh=MWY1MmQxOWxwMzFq&utm_source=qr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-white"
+            >
               <Instagram size={22} />
             </motion.a>
           </div>
@@ -97,8 +136,8 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-gray-700 mt-12 py-6 text-center text-gray-500 text-sm">
-        © {new Date().getFullYear()} Developed by 
-        <span className="text-blue-500 font-medium"> omradixsolutions</span>. All rights reserved.
+        © {new Date().getFullYear()} Developed by{" "}
+        <span className="text-blue-500 font-medium">omradixsolutions</span>. All rights reserved.
       </div>
     </footer>
   );

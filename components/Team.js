@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image"; // ✅ Import Next.js Image
 
 const team = [
   {
@@ -89,10 +90,12 @@ function InteractiveTeamCard({ member }) {
           active ? "scale-105" : ""
         }`}
       >
-        <img
+        <Image
           src={member.img}
           alt={member.name}
-          className="w-full h-full object-cover"
+          width={112} // 28 * 4px (tailwind w-28)
+          height={112}
+          className="w-full h-full object-cover rounded-full"
         />
       </div>
 
