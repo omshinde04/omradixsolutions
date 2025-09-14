@@ -32,9 +32,10 @@ function useCountUp(target, duration = 2000) {
 }
 
 export default function Partner() {
-  // Precompute counts for hooks at top level
-  const counts = stats.map((stat) => useCountUp(stat.value));
-
+  // ✅ Call hooks at the top level for each stat
+  const projectCount = useCountUp(stats[0].value);
+  const experienceCount = useCountUp(stats[1].value);
+  const productCount = useCountUp(stats[2].value);
   const customerCount = useCountUp(500);
 
   return (
@@ -86,24 +87,42 @@ export default function Partner() {
 
           {/* Right Stats */}
           <div className="flex flex-row gap-12 lg:justify-end">
-            {stats.map((stat, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 40, scale: 0.8 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ delay: i * 0.2, duration: 0.8, type: "spring", stiffness: 100 }}
-                viewport={{ once: true }}
-                className="text-center lg:text-left"
-              >
-                <h3 className="text-3xl md:text-4xl font-bold text-[#EEFF04]">
-                  {counts[i]}
-                  {stat.suffix}
-                </h3>
-                <p className="text-gray-400 mt-2">{stat.label}</p>
-              </motion.div>
-            ))}
+            <motion.div
+              initial={{ opacity: 0, y: 40, scale: 0.8 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.8, type: "spring", stiffness: 100 }}
+              viewport={{ once: true }}
+              className="text-center lg:text-left"
+            >
+              <h3 className="text-3xl md:text-4xl font-bold text-[#EEFF04]">{projectCount}+ </h3>
+              <p className="text-gray-400 mt-2">{stats[0].label}</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 40, scale: 0.8 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ delay: 0.4, duration: 0.8, type: "spring", stiffness: 100 }}
+              viewport={{ once: true }}
+              className="text-center lg:text-left"
+            >
+              <h3 className="text-3xl md:text-4xl font-bold text-[#EEFF04]">{experienceCount}+ </h3>
+              <p className="text-gray-400 mt-2">{stats[1].label}</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 40, scale: 0.8 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ delay: 0.6, duration: 0.8, type: "spring", stiffness: 100 }}
+              viewport={{ once: true }}
+              className="text-center lg:text-left"
+            >
+              <h3 className="text-3xl md:text-4xl font-bold text-[#EEFF04]">{productCount}+ </h3>
+              <p className="text-gray-400 mt-2">{stats[2].label}</p>
+            </motion.div>
           </div>
         </div>
+
+
 
         {/* Bottom Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center font-['Inter']">
