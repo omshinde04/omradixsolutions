@@ -23,7 +23,7 @@ export default function Footer() {
               The future of business is digital © 2024 Omradix Solutions
             </p>
             <p className="text-gray-500 text-xs italic mt-2">
-              "Omradix Solutions is a web development & digital growth platform."
+              {"Omradix Solutions is a web development & digital growth platform."}
             </p>
           </div>
 
@@ -109,6 +109,7 @@ export default function Footer() {
             <motion.a
               href="https://www.linkedin.com/company/omradix-solutions/"
               target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.2, color: "#0A66C2" }}
               className="transition"
             >
@@ -117,6 +118,7 @@ export default function Footer() {
             <motion.a
               href="https://www.instagram.com/omradix_solutions?igsh=cHp4bzF6ZmNqeWow"
               target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.2, color: "#E4405F" }}
               className="transition"
             >
