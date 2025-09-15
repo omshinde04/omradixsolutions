@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { Home, User, Briefcase, FileText, Phone } from "lucide-react";
+import { Spotlight } from "../ui/spotlight"; // Updated Spotlight component
 
 export default function HeroSection() {
   const navLinks = [
@@ -58,21 +59,23 @@ export default function HeroSection() {
       id="home"
       className="relative w-full h-screen flex flex-col items-center justify-between overflow-hidden"
     >
-      {/* Background Image */}
+      {/* Spotlight Background */}
+      <Spotlight className="-top-40 left-0 md:-top-20 md:left-60" />
+
+      {/* Optional Background Image
       <div className="absolute inset-0 -z-20">
         <Image
-          src="/images/hero1.png"
+          src="/images/hero1.png" 
           alt="Background"
           fill
           className="object-cover"
           priority
         />
         <div className="absolute inset-0 bg-black/20 -z-10"></div>
-      </div>
+      </div> */}
 
       {/* Navbar */}
       <nav className="hidden md:flex w-[90%] max-w-6xl mx-auto justify-between items-center px-6 py-3 bg-black/80 text-white rounded-full shadow-lg absolute top-6 left-1/2 -translate-x-1/2 backdrop-blur-sm z-10">
-        {/* Brand */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -83,7 +86,6 @@ export default function HeroSection() {
           <span className="h-5 w-px bg-white/40"></span>
         </motion.div>
 
-        {/* Links with Icons */}
         <ul className="flex gap-8 text-white font-medium">
           {navLinks.map((link, i) => {
             const Icon = link.icon;
@@ -129,26 +131,21 @@ export default function HeroSection() {
         <motion.button
           whileHover={{
             scale: 1.05,
-            boxShadow: "0px 0px 15px rgba(238, 255, 4, 0.6)", // subtle neon glow
+            boxShadow: "0px 0px 15px rgba(238, 255, 4, 0.6)",
           }}
           whileTap={{ scale: 0.95 }}
           transition={{ type: "spring", stiffness: 200, damping: 12 }}
           className="mt-6 px-8 py-3 bg-white text-black rounded-xl shadow-md font-semibold flex items-center gap-2 relative overflow-hidden"
         >
-          {/* Glow sweep animation */}
           <motion.span
             className="absolute inset-0 bg-gradient-to-r from-[#EEFF04]/20 via-transparent to-[#EEFF04]/20"
             initial={{ x: "-100%" }}
             animate={{ x: "100%" }}
             transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
           />
-
-         <a href="#contact">
-  <span className="relative z-10">Contact Now</span>
-</a>
-
-
-          {/* Sliding Arrow */}
+          <a href="#contact">
+            <span className="relative z-10">Contact Now</span>
+          </a>
           <motion.span
             className="relative z-10"
             whileHover={{ x: 6 }}
@@ -164,7 +161,7 @@ export default function HeroSection() {
         <div className="absolute inset-0 w-full h-full z-0">
           <svg width="100%" height="100%">
             {[0.2, 0.35, 0.5, 0.65].map((opacity, i) => {
-              const y = 320 + i * 50; // further moved down
+              const y = 320 + i * 50;
               return (
                 <path
                   key={i}
@@ -224,7 +221,7 @@ export default function HeroSection() {
         </div>
       </motion.div>
 
-      {/* Mobile Navbar with Premium Marble-like Animation */}
+      {/* Mobile Navbar */}
       <div className="md:hidden fixed bottom-0 left-0 w-full bg-black/95 text-white flex justify-around items-center py-2 border-t border-white/10 z-50">
         {navLinks.map((link, i) => {
           const Icon = link.icon;
@@ -236,15 +233,15 @@ export default function HeroSection() {
                   scale: 0,
                   opacity: 0,
                   x: i % 2 === 0 ? -20 : 20,
-                }} // staggered horizontal start
+                }}
                 animate={{
-                  y: [50, -10, 0], // bounce up and settle
-                  scale: [0, 1.2, 1], // stretch like rubber band
-                  x: [i % 2 === 0 ? -20 : 20, 0], // slide in from sides
+                  y: [50, -10, 0],
+                  scale: [0, 1.2, 1],
+                  x: [i % 2 === 0 ? -20 : 20, 0],
                   opacity: [0, 1],
                 }}
                 transition={{
-                  type: "tween", // tween allows multi-keyframe
+                  type: "tween",
                   ease: "easeOut",
                   duration: 0.8,
                   delay: i * 0.15,

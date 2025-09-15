@@ -14,11 +14,14 @@
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.543.0",
     "mongoose": "^8.18.1",
+    "motion": "^12.23.12",
     "next": "15.5.3",
     "node-mailer": "^0.1.1",
     "nodemailer": "^7.0.6",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "three": "^0.180.0",
+    "vanta": "^0.5.24"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
