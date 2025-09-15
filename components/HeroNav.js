@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { Home, User, Briefcase, FileText, Phone } from "lucide-react";
-import { Spotlight } from "../ui/spotlight"; // Updated Spotlight component
+import { Home, User, Briefcase, FileText, Phone, Menu, X } from "lucide-react";
+import { Spotlight } from "../ui/spotlight";
 
 export default function HeroSection() {
   const navLinks = [
@@ -18,6 +18,10 @@ export default function HeroSection() {
 
   const paths = useRef([]);
   const [width, setWidth] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(true);
+  const lastScrollY = useRef(0);
+  const scrollTimeout = useRef(null);
 
   // Get window width safely
   useEffect(() => {
@@ -30,11 +34,11 @@ export default function HeroSection() {
   // Animate neon waves
   useEffect(() => {
     if (!width) return;
-    paths.current.forEach((path, i) => {
+    paths.current.forEach((path) => {
       if (!path) return;
       const length = path.getTotalLength();
-      path.style.strokeDasharray = length;
-      path.style.strokeDashoffset = length;
+      path.style.strokeDasharray = `${length}`;
+      path.style.strokeDashoffset = `${length}`;
     });
 
     let startTime;
@@ -46,7 +50,9 @@ export default function HeroSection() {
         if (!path) return;
         const length = path.getTotalLength();
         const speed = 8000 + i * 2000;
-        path.style.strokeDashoffset = length - (elapsed / speed) * length;
+        path.style.strokeDashoffset = `${
+          length - (elapsed / speed) * length
+        }`;
       });
 
       requestAnimationFrame(animate);
@@ -54,28 +60,50 @@ export default function HeroSection() {
     requestAnimationFrame(animate);
   }, [width]);
 
+  // Navbar hide on scroll down, show on scroll up or pause
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY.current) {
+        // scrolling down
+        setShowNavbar(false);
+      } else {
+        // scrolling up
+        setShowNavbar(true);
+      }
+
+      lastScrollY.current = currentScrollY;
+
+      // Show navbar when scrolling pauses
+      if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+      scrollTimeout.current = setTimeout(() => {
+        setShowNavbar(true);
+      }, 200);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+    };
+  }, []);
+
   return (
     <section
       id="home"
-      className="relative w-full h-screen flex flex-col items-center justify-between overflow-hidden"
+      className="relative w-full h-screen flex flex-col items-center justify-between overflow-hidden pt-24 md:pt-0"
     >
       {/* Spotlight Background */}
       <Spotlight className="-top-40 left-0 md:-top-20 md:left-60" />
 
-      {/* Optional Background Image
-      <div className="absolute inset-0 -z-20">
-        <Image
-          src="/images/hero1.png" 
-          alt="Background"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-black/20 -z-10"></div>
-      </div> */}
-
-      {/* Navbar */}
-      <nav className="hidden md:flex w-[90%] max-w-6xl mx-auto justify-between items-center px-6 py-3 bg-black/80 text-white rounded-full shadow-lg absolute top-6 left-1/2 -translate-x-1/2 backdrop-blur-sm z-10">
+      {/* Desktop Navbar */}
+      <motion.nav
+        initial={{ y: -80 }}
+        animate={{ y: showNavbar ? 0 : -80 }}
+        transition={{ duration: 0.4 }}
+        className="hidden md:flex w-[90%] max-w-6xl mx-auto justify-between items-center px-6 py-3 bg-black/80 text-white rounded-full shadow-lg fixed top-6 left-1/2 -translate-x-1/2 backdrop-blur-sm z-50"
+      >
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -107,10 +135,65 @@ export default function HeroSection() {
             );
           })}
         </ul>
-      </nav>
+      </motion.nav>
+
+      {/* Mobile Navbar with Hamburger */}
+      <motion.div
+        initial={{ y: -80 }}
+        animate={{ y: showNavbar ? 0 : -80 }}
+        transition={{ duration: 0.4 }}
+        className="md:hidden fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-md bg-black/80 text-white flex items-center justify-between px-6 py-3 rounded-full shadow-lg backdrop-blur-sm z-50"
+      >
+        {/* Logo */}
+        <div className="text-xs font-bold tracking-wide text-white whitespace-nowrap">
+          OMRADIX SOLUTIONS
+        </div>
+
+        {/* Divider */}
+        <span className="h-5 w-px bg-white/40 mx-3"></span>
+
+        {/* Hamburger */}
+        <button onClick={() => setMenuOpen(!menuOpen)} className="p-2">
+          {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+      </motion.div>
+
+      {/* Full-Screen Hamburger Menu */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ y: "-100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "-100%" }}
+            transition={{ type: "spring", stiffness: 100, damping: 20 }}
+            className="fixed inset-0 bg-black/95 text-white flex flex-col items-center justify-center space-y-8 z-40"
+          >
+            {navLinks.map((link, i) => {
+              const Icon = link.icon;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                >
+                  <Link
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="text-2xl font-semibold hover:text-[#EEFF04] transition flex items-center gap-3"
+                  >
+                    <Icon className="w-6 h-6" />
+                    {link.label}
+                  </Link>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Hero Content */}
-      <div className="flex flex-col items-center justify-center text-center px-4 mt-10 md:mt-40 z-20">
+      <div className="flex flex-col items-center justify-center text-center px-4 mt-20 md:mt-40 z-20">
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -220,46 +303,6 @@ export default function HeroSection() {
           </span>
         </div>
       </motion.div>
-
-      {/* Mobile Navbar */}
-      <div className="md:hidden fixed bottom-0 left-0 w-full bg-black/95 text-white flex justify-around items-center py-2 border-t border-white/10 z-50">
-        {navLinks.map((link, i) => {
-          const Icon = link.icon;
-          return (
-            <Link key={i} href={link.href} scroll={true}>
-              <motion.div
-                initial={{
-                  y: 50,
-                  scale: 0,
-                  opacity: 0,
-                  x: i % 2 === 0 ? -20 : 20,
-                }}
-                animate={{
-                  y: [50, -10, 0],
-                  scale: [0, 1.2, 1],
-                  x: [i % 2 === 0 ? -20 : 20, 0],
-                  opacity: [0, 1],
-                }}
-                transition={{
-                  type: "tween",
-                  ease: "easeOut",
-                  duration: 0.8,
-                  delay: i * 0.15,
-                }}
-                whileHover={{
-                  scale: 1.3,
-                  y: -5,
-                  transition: { type: "spring", stiffness: 300, damping: 12 },
-                }}
-                className="flex flex-col items-center justify-center text-xs font-medium text-white/70 hover:text-[#EEFF04] cursor-pointer"
-              >
-                <Icon className="h-5 w-5 mb-1" />
-                {link.label}
-              </motion.div>
-            </Link>
-          );
-        })}
-      </div>
     </section>
   );
 }
