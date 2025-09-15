@@ -7,24 +7,25 @@ import { Code2, Palette, Sparkles, Users2 } from "lucide-react";
 export default function Team() {
   const [expandedIndex, setExpandedIndex] = useState(null);
 
-  const team = [
-    {
-      name: "Om Shinde",
-      role: "Full Stack Developer",
-      desc: "Crafts powerful full-stack applications with expertise in AI, scalable backend systems, and modern UI engineering.",
-      icon: (
-        <Code2 className="w-10 h-10 text-purple-400 group-hover:scale-110 transition-transform" />
-      ),
-    },
-    {
-      name: "Vijay Kalantre",
-      role: "UI/UX Developer & Marketing",
-      desc: "Designs immersive digital experiences, blending creativity with strategy to drive impactful branding and engagement.",
-      icon: (
-        <Palette className="w-10 h-10 text-blue-400 group-hover:rotate-12 transition-transform" />
-      ),
-    },
-  ];
+ const team = [
+  {
+    name: "Om Shinde",
+    role: "Founder & Full Stack Developer",
+    desc: "Leads OmRadix Solutions with a vision for innovation. Expert in full-stack development, AI integration, and scalable systems — building powerful solutions that help businesses grow.",
+    icon: (
+      <Code2 className="w-10 h-10 text-purple-400 group-hover:scale-110 transition-transform" />
+    ),
+  },
+  {
+    name: "Vijay Kalantre",
+    role: "Co-Founder, UI/UX & Marketing",
+    desc: "Brings ideas to life with creative UI/UX design and impactful marketing strategies. Focused on building engaging digital experiences and driving brand success.",
+    icon: (
+      <Palette className="w-10 h-10 text-blue-400 group-hover:rotate-12 transition-transform" />
+    ),
+  },
+];
+
 
   return (
     <section

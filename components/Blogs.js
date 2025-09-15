@@ -7,44 +7,43 @@ export default function Blogs() {
   const [showAll, setShowAll] = useState(false);
   const [expandedIndex, setExpandedIndex] = useState(null);
   const [activeCategory, setActiveCategory] = useState("All");
-
-  const blogs = [
-    {
-      title: "The Future of AI in Web Development",
-      image: "/blogs/blog1.png",
-      desc: "AI is transforming how websites are built and optimized. From AI-driven design assistants to automated content generation, explore how artificial intelligence is reshaping the future of web development.",
-      category: "AI",
-      date: "Aug 20, 2025",
-    },
-    {
-      title: "Top 5 Trends in UI/UX Design",
-      image: "/blogs/blog2.png",
-      desc: "Discover the latest UI/UX trends that are defining modern digital experiences: neumorphism, glassmorphism, dark mode, immersive animations, and micro-interactions.",
-      category: "Design",
-      date: "Jul 15, 2025",
-    },
-    {
-      title: "Scaling Businesses with Cloud Solutions",
-      image: "/blogs/blog3.png",
-      desc: "Cloud technology is no longer optional. Learn how startups and enterprises leverage cloud-native apps, microservices, and serverless architecture for scalability and cost-efficiency.",
-      category: "Cloud",
-      date: "Jun 28, 2025",
-    },
-    {
-      title: "Mobile App Development: Best Practices",
-      image: "/blogs/blog4.png",
-      desc: "From performance optimization to responsive UI frameworks, we break down the must-follow best practices for building successful mobile applications in 2025.",
-      category: "Mobile",
-      date: "May 12, 2025",
-    },
-    {
-      title: "SEO Strategies That Actually Work",
-      image: "/blogs/blog5.png",
-      desc: "Forget old-school keyword stuffing. Modern SEO is about intent-driven content, technical optimization, and user experience. Learn practical strategies to boost your rankings.",
-      category: "Marketing",
-      date: "Apr 3, 2025",
-    },
-  ];
+const blogs = [
+  {
+    title: "Artificial Intelligence: The Future of Smarter Businesses",
+    image: "/blogs/blog1.png",
+    desc: "AI is revolutionizing industries by automating workflows, enhancing customer experiences, and driving data-driven decisions. Discover how businesses can leverage AI to reduce costs, save time, and scale smarter.",
+    category: "AI",
+    date: "Sep 10, 2025",
+  },
+  {
+    title: "Why Good Design Builds Trust",
+    image: "/blogs/blog2.png",
+    desc: "Design isn’t just about visuals—it’s about creating meaningful user experiences. Learn why clean, modern, and user-centric UI/UX design plays a crucial role in building trust and driving conversions.",
+    category: "Design",
+    date: "Aug 28, 2025",
+  },
+  {
+    title: "Scaling Businesses with Cloud Technology",
+    image: "/blogs/blog3.png",
+    desc: "From AWS to Azure, cloud platforms are transforming how businesses scale. Explore how cloud hosting, databases, and applications enable flexibility, security, and efficiency in today’s digital age.",
+    category: "Cloud",
+    date: "Aug 5, 2025",
+  },
+  {
+    title: "Why Mobile-First is the Future",
+    image: "/blogs/blog4.png",
+    desc: "With over 70% of users browsing on mobile, mobile-first design is no longer optional. Learn how responsive sites and mobile apps help businesses reach customers anywhere, anytime.",
+    category: "Mobile",
+    date: "Jul 22, 2025",
+  },
+  {
+    title: "Digital Marketing: The Growth Engine of Modern Business",
+    image: "/blogs/blog5.png",
+    desc: "Marketing today is about trust and engagement. From SEO to social media strategies, discover how digital marketing connects brands with the right audience and drives real results.",
+    category: "Marketing",
+    date: "Jul 1, 2025",
+  },
+];
 
   const categories = ["All", "AI", "Design", "Cloud", "Mobile", "Marketing"];
   const filteredBlogs =

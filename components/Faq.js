@@ -8,25 +8,33 @@ export default function FAQSection() {
   const [activeIndex, setActiveIndex] = useState(null);
   const [question, setQuestion] = useState("");
 
+const faqs = [
+  {
+    q: "What Is Your Hourly Rate?",
+    a: "Our rates depend on the project’s scope, complexity, and required expertise. We offer flexible engagement models, including hourly and fixed-price packages, to best suit client needs.",
+  },
+  {
+    q: "What Type Of Projects Do You Take On?",
+    a: "At Omradix Solutions, we specialize in Web Development, Mobile Applications, AI-powered solutions, and Digital Marketing. Whether it’s a startup idea, business automation, or enterprise-grade systems — we handle end-to-end development.",
+  },
+  {
+    q: "How Do You Charge For Projects?",
+    a: "We provide transparent pricing models. For well-defined projects, we recommend a fixed-price model, while for ongoing or evolving requirements, we suggest an hourly or monthly retainer model.",
+  },
+  {
+    q: "What Time-Zone Do You Work In?",
+    a: "We operate primarily in IST (Indian Standard Time), but our team is flexible and accustomed to collaborating with clients across US, Europe, and other time zones.",
+  },
+  {
+    q: "Who Is The Founder Of Omradix Solutions?",
+    a: "Om Shinde is the founder of Omradix Solutions. With expertise in Full-Stack Development, AI, and Digital Strategy, he leads the company to deliver innovative solutions to clients worldwide.",
+  },
+  {
+    q: "Do You Offer Ongoing Support After Project Delivery?",
+    a: "Yes! We believe in long-term partnerships. After deployment, we provide maintenance, updates, and continuous support to ensure smooth business operations.",
+  },
+];
 
-  const faqs = [
-    {
-      q: "What Is Your Hourly Rate?",
-      a: "We’re sorry you are experiencing some trouble. Open the help chat in the bottom right corner to chat with someone directly or we might have some helpful information in our knowledge base here.",
-    },
-    {
-      q: "What Type Of Projects Do You Take On?",
-      a: "We take on web, mobile, and AI-driven projects — from idea validation to full-scale production apps.",
-    },
-    {
-      q: "How Do You Charge For Projects?",
-      a: "We charge based on the scope and complexity. Typically, we offer both fixed-price and hourly models depending on the requirements.",
-    },
-    {
-      q: "What Time-Zone Do You Work In?",
-      a: "We primarily work in the IST (Indian Standard Time) zone but are flexible and adjust to client time zones when required.",
-    },
-  ];
 
   const toggleFAQ = (idx) => {
     setActiveIndex(activeIndex === idx ? null : idx);

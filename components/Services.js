@@ -13,39 +13,39 @@ import {
 
 export default function Services() {
   const [showAll, setShowAll] = useState(false);
+const services = [
+  {
+    title: "Website Development",
+    icon: <Globe className="w-7 h-7 text-white" />,
+    desc: "Custom, modern, and responsive websites tailored to your business needs.",
+  },
+  {
+    title: "E-Commerce Solutions",
+    icon: <ShoppingCart className="w-7 h-7 text-white" />,
+    desc: "Build powerful online stores with secure payments and smooth user experience.",
+  },
+  {
+    title: "Digital Marketing",
+    icon: <TrendingUp className="w-7 h-7 text-white" />,
+    desc: "From SEO to Social Media, we ensure your brand reaches the right audience.",
+  },
+  {
+    title: "Branding & Design",
+    icon: <Users className="w-7 h-7 text-white" />,
+    desc: "Creative logos, graphics, and visuals that make your brand unforgettable.",
+  },
+  {
+    title: "Software & IT Solutions",
+    icon: <Cloud className="w-7 h-7 text-white" />,
+    desc: "Smart, scalable, and business-driven technology solutions for growth.",
+  },
+  {
+    title: "Security & Support",
+    icon: <Shield className="w-7 h-7 text-white" />,
+    desc: "Reliable, secure, and ongoing IT support for modern businesses.",
+  },
+];
 
-  const services = [
-    {
-      title: "Website Development",
-      icon: <Globe className="w-7 h-7 text-white" />,
-      desc: "Stunning, responsive, and high-performance websites tailored to your business.",
-    },
-    {
-      title: "E-Commerce Solutions",
-      icon: <ShoppingCart className="w-7 h-7 text-white" />,
-      desc: "End-to-end e-commerce development with secure payments and scalable stores.",
-    },
-    {
-      title: "Digital Marketing & SEO",
-      icon: <TrendingUp className="w-7 h-7 text-white" />,
-      desc: "Rank higher on Google, attract traffic, and grow with measurable results.",
-    },
-    {
-      title: "Social Media Marketing",
-      icon: <Users className="w-7 h-7 text-white" />,
-      desc: "Engaging campaigns and creatives for Instagram, Facebook, LinkedIn & more.",
-    },
-    {
-      title: "Cloud & IT Solutions",
-      icon: <Cloud className="w-7 h-7 text-white" />,
-      desc: "Scalable hosting, cloud setup, IT support, and future-ready infrastructure.",
-    },
-    {
-      title: "Security & Support",
-      icon: <Shield className="w-7 h-7 text-white" />,
-      desc: "Reliable and secure solutions with ongoing IT support for modern businesses.",
-    },
-  ];
 
   return (
    <section
