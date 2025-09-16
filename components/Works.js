@@ -136,16 +136,16 @@ export default function Works() {
                       setExpandedIndex(isExpanded ? null : idx)
                     }
                   >
-                    {/* Image (Fixed ratio) */}
-                    <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl mb-6">
-                      <motion.img
-                        src={work.image}
-                        alt={work.title}
-                        className="absolute inset-0 w-full h-full object-cover"
-                        whileHover={{ scale: 1.07 }}
-                        transition={{ duration: 0.5 }}
-                      />
-                    </div>
+                   <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl mb-6 bg-gray-900">
+  <motion.img
+    src={work.image}
+    alt={work.title}
+    className="absolute inset-0 w-full h-full object-contain"
+    whileHover={{ scale: 1.05 }}
+    transition={{ duration: 0.5 }}
+  />
+</div>
+
 
                     {/* Title */}
                     <h3

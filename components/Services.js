@@ -9,6 +9,7 @@ import {
   Users,
   Cloud,
   Shield,
+  PenTool
 } from "lucide-react";
 
 export default function Services() {
@@ -30,10 +31,11 @@ const services = [
     desc: "From SEO to Social Media, we ensure your brand reaches the right audience.",
   },
   {
-    title: "Branding & Design",
-    icon: <Users className="w-7 h-7 text-white" />,
-    desc: "Creative logos, graphics, and visuals that make your brand unforgettable.",
-  },
+  title: "UI/UX Design",
+  icon: <PenTool className="w-7 h-7 text-white" />, 
+  desc: "Intuitive and user-friendly interfaces focused on enhancing user experience and engagement.",
+}
+,
   {
     title: "Software & IT Solutions",
     icon: <Cloud className="w-7 h-7 text-white" />,

@@ -27,7 +27,7 @@ const faqs = [
   },
   {
     q: "Who Is The Founder Of Omradix Solutions?",
-    a: "Om Shinde is the founder of Omradix Solutions. With expertise in Full-Stack Development, AI, and Digital Strategy, he leads the company to deliver innovative solutions to clients worldwide.",
+    a: "Om Shinde is the founder and Vijay Kalantre is the Co-Founder of Omradix Solutions. With expertise in Full-Stack Development,UI/UX,AI, and Digital Strategy, They leads the company to deliver innovative solutions to clients worldwide.",
   },
   {
     q: "Do You Offer Ongoing Support After Project Delivery?",

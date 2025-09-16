@@ -31,3 +31,17 @@ body {
 .animate-aurora {
   animation: aurora 15s ease-in-out infinite;
 }
+
+
+
+/* Custom Scrollbar for Chat */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #eaff04;
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
