@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X } from "lucide-react";
+import { MessageCircle, X,User} from "lucide-react";
 
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -123,7 +123,6 @@ export default function ChatBot() {
       setMessages((prev) => [...prev, { sender: "bot", text: reply }]);
     }, 600);
   };
-
 return (
   <div className="fixed bottom-4 right-4 z-50">
     {/* Toggle Button */}
@@ -151,7 +150,7 @@ return (
         >
           {/* Header */}
           <div className="flex justify-between items-center p-3 border-b border-gray-800 bg-gradient-to-r from-black via-gray-900 to-black rounded-t-xl">
-            <h3 className="font-semibold text-md text-white drop-shadow-sm">
+            <h3 className="font-semibold text-md text-white drop-shadow-sm flex items-center gap-2">
               🤖 OmRadix Assistant
             </h3>
             <button
@@ -163,20 +162,41 @@ return (
           </div>
 
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-3 space-y-2 custom-scrollbar">
+          <div className="flex-1 overflow-y-auto p-3 space-y-3 custom-scrollbar">
             {messages.map((msg, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.25 }}
-                className={`px-3 py-1.5 rounded-xl max-w-[75%] text-[12px] sm:text-sm md:text-sm leading-snug shadow-sm ${
-                  msg.sender === "bot"
-                    ? "bg-gray-900 text-white self-start border border-gray-700"
-                    : "bg-gradient-to-r from-white to-gray-200 text-black self-end ml-auto font-medium"
+                className={`flex items-end gap-2 ${
+                  msg.sender === "bot" ? "justify-start" : "justify-end"
                 }`}
               >
-                {msg.text}
+                {/* Bot Avatar */}
+                {msg.sender === "bot" && (
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-gray-700 via-gray-800 to-black border border-gray-600 flex items-center justify-center shadow-sm">
+                    <MessageCircle className="w-4 h-4 text-white" />
+                  </div>
+                )}
+
+                {/* Message Bubble */}
+                <div
+                  className={`px-3 py-1.5 rounded-xl max-w-[70%] text-[12px] sm:text-sm md:text-sm leading-snug shadow-sm ${
+                    msg.sender === "bot"
+                      ? "bg-gray-900 text-white border border-gray-700"
+                      : "bg-gradient-to-r from-white to-gray-200 text-black font-medium"
+                  }`}
+                >
+                  {msg.text}
+                </div>
+
+                {/* User Avatar */}
+                {msg.sender === "user" && (
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-white to-gray-300 border border-gray-400 flex items-center justify-center shadow-sm">
+                    <User className="w-4 h-4 text-black" />
+                  </div>
+                )}
               </motion.div>
             ))}
           </div>
@@ -201,6 +221,7 @@ return (
     </AnimatePresence>
   </div>
 );
+
 
 
 }
