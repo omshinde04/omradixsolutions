@@ -95,11 +95,10 @@ export default function Works() {
               onClick={() => setActiveCategory(cat)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
-                activeCategory === cat
+              className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${activeCategory === cat
                   ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-md"
                   : "bg-gray-800/80 text-gray-300 hover:text-white hover:bg-gray-700/90 border border-gray-700"
-              }`}
+                }`}
             >
               {cat}
             </motion.button>
@@ -127,24 +126,24 @@ export default function Works() {
                     whileTap={{ scale: 0.98 }}
                     className={`relative group bg-[#1D1D1F]/90 backdrop-blur-md p-6 rounded-2xl 
                       border transition-all duration-500 cursor-pointer
-                      ${
-                        isExpanded
-                          ? "border-transparent shadow-[0_0_35px_rgba(139,92,246,0.6)]"
-                          : "border-gray-800 hover:border-transparent hover:shadow-[0_0_35px_rgba(139,92,246,0.6)]"
+                      ${isExpanded
+                        ? "border-transparent shadow-[0_0_35px_rgba(139,92,246,0.6)]"
+                        : "border-gray-800 hover:border-transparent hover:shadow-[0_0_35px_rgba(139,92,246,0.6)]"
                       }`}
                     onClick={() =>
                       setExpandedIndex(isExpanded ? null : idx)
                     }
                   >
-                   <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl mb-6 bg-gray-900">
+                    <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl mb-6 bg-gray-900">
   <motion.img
     src={work.image}
     alt={work.title}
-    className="absolute inset-0 w-full h-full object-contain"
+    className="absolute inset-0 w-full h-full object-cover"
     whileHover={{ scale: 1.05 }}
     transition={{ duration: 0.5 }}
   />
 </div>
+
 
 
                     {/* Title */}
@@ -159,10 +158,9 @@ export default function Works() {
                     {/* Description */}
                     <p
                       className={`text-gray-400 text-sm md:text-base leading-relaxed transition-all duration-300
-                        ${
-                          isExpanded
-                            ? "line-clamp-none"
-                            : "line-clamp-3 group-hover:line-clamp-none"
+                        ${isExpanded
+                          ? "line-clamp-none"
+                          : "line-clamp-3 group-hover:line-clamp-none"
                         }`}
                     >
                       {work.desc}
