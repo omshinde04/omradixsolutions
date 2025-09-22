@@ -199,16 +199,13 @@ export default function Partner() {
               whileHover={{ scale: 1.05 }}
             >
               <Image
-                src="/images/t3.png"
+                src="/images/t4.jpg"
                 alt="Customer Trust"
                 width={240}
                 height={160}
                 className="object-cover w-full h-full"
               />
-              <div className="absolute text-black text-center drop-shadow-xl animate-float">
-                <h3 className="text-lg md:text-xl font-bold">{customerCount}+</h3>
-                <p className="text-xs md:text-sm italic">Customer Trust Us</p>
-              </div>
+              
             </motion.div>
           </motion.div>
         </div>
