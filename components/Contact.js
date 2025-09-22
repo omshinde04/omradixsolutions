@@ -100,9 +100,19 @@ export default function Contact() {
               className="w-28 h-1 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full origin-left"
             />
 
-            <div className="space-y-2 text-gray-300 text-sm md:text-base">
-              <p>📞 +91 9373545169</p>
-              <p>📞 +91 7378534650</p>
+            <div className="space-y-2 text-gray-300 text-sm md:text-base flex flex-col gap-1">
+              {/* Phone numbers on the same line */}
+              <p className="flex items-center gap-2">
+                📞
+                <a href="tel:+919373545169" className="text-gray-300 ">
+                  +91 9373545169
+                </a>
+                <span>/</span>
+                <a href="tel:+917378534650" className="text-gray-300 ">
+                  +91 7378534650
+                </a>
+              </p>
+              <p>⏰ 9 AM to 7 PM, Monday to Saturday</p>
               <p>📧 omradixsolutions@gmail.com</p>
             </div>
           </motion.div>

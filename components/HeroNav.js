@@ -273,7 +273,7 @@ export default function HeroSection() {
         className="flex flex-col items-center text-center px-4 mb-28 md:mb-20 mt-6 md:mt-0 z-20"
       >
         <h3 className="text-white font-bold text-lg">
-          Trusted By 1,000+ Businesses.
+          Trusted By 10+ Businesses.
         </h3>
         <p className="text-gray-300 max-w-2xl text-sm md:text-base mt-2">
           From Startups To Growing Enterprises, Companies Choose Omradix
@@ -299,7 +299,7 @@ export default function HeroSection() {
             </div>
           ))}
           <span className="ml-3 text-gray-300 text-sm">
-            Trusted By 1,000+ Clients.
+            Trusted By 15+ Clients.
           </span>
         </div>
       </motion.div>

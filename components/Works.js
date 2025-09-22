@@ -10,48 +10,63 @@ export default function Works() {
 
   const works = [
     {
-      title: "Thread Haus — E-Commerce & Brand Experience",
-      image: "/projects/img1.png",
-      desc: "Built a customised online store for Thread Haus Co with emphasis on sustainable fashion and community impact. Key features: upcycled material products, drop-collections, trending items shown dynamically, and strong social proof & mission narrative.",
-      category: "Web",
+      title: "MET College Leave Management System",
+      image: "/projects/img3.jpeg",
+      desc: "A comprehensive college management system for MET College, Nashik. Includes student and faculty management, attendance tracking, exam results, notifications, and automated alerts for students and staff.",
+      category: "Management System",
+      liveLink: "https://lms-cyan-gamma.vercel.app/",
     },
     {
-      title: "Leave Desk — Smart Leave Management System",
-      image: "/projects/img2.png",
-      desc: "Designed and developed a digital leave management platform for MET College, Adgaon Nashik. The system enables both students and faculty to apply for leave seamlessly with automated email notifications and real-time tracking.",
-      category: "Web",
-    },
-    {
-      title: "Business Dashboard",
-      image: "/projects/img3.png",
-      desc: "Interactive analytics dashboard with real-time data and charts.",
-      category: "Web",
-    },
-    {
-      title: "Social Media App",
+      title: "MindWell — AI-Powered Wellness Tracker",
       image: "/projects/img4.png",
-      desc: "Mobile-first app for connecting and sharing with modern UI.",
-      category: "Mobile",
+      desc: "Designed an AI-driven personal wellness tracker that monitors daily habits, provides health insights, and suggests personalized improvements for better lifestyle balance.",
+      category: "AI",
+      liveLink: "https://a-iwellness.vercel.app/",
     },
     {
-      title: "Lost & Found System",
+      title: "CertiGen — Automated Certificate Generator",
       image: "/projects/img5.png",
-      desc: "AI-powered system for reporting and finding lost items with notifications.",
-      category: "AI",
+      desc: "Developed a responsive web application that automates certificate creation based on user input. Designed for efficiency, it generates downloadable certificates instantly with a focus on accuracy, automation, and professional design aesthetics.",
+      category: "Automation",
+      liveLink: "https://certificate-genertor.vercel.app/",
     },
     {
-      title: "Finance Tracker",
+      title: "Vijay Kalantre — Personal Portfolio Website",
+      image: "/projects/img2.png",
+      desc: "Crafted a modern and responsive portfolio website with an elegant gradient theme, showcasing web development and data analytics projects with a vibrant, user-focused design.",
+      category: "Web",
+      liveLink: "#",
+    },
+    {
+      title: "FurniStyle — Modern Furniture E-Commerce",
+      image: "/projects/img1.png",
+      desc: "Developed a sleek and responsive furniture e-commerce platform with product catalog, category filters, and secure checkout. Focused on elegant UI/UX and mobile-friendly design.",
+      category: "Web",
+      liveLink: "#",
+    },
+    {
+      title: "Thread Haus — E-Commerce & Brand Experience",
       image: "/projects/img6.png",
-      desc: "AI-driven finance tracker with insights, expense tracking, and goals.",
-      category: "AI",
+      desc: "Built a customized online store for Thread Haus Co with a sleek gradient-themed design. Features include upcycled material products, dynamic trending collections, and a strong brand narrative emphasizing sustainability and community impact.",
+      category: "Web",
+      liveLink: "https://thread-haus-xi.vercel.app/",
     },
   ];
 
-  const categories = ["All", "Web", "AI", "Mobile"];
+  const categories = ["All", "Web", "AI", "Mobile", "Management System", "Automation"];
   const filteredWorks =
     activeCategory === "All"
       ? works
       : works.filter((w) => w.category === activeCategory);
+
+  // Function to handle Live button click
+  const handleLiveClick = (link) => {
+    if (!link || link === "#") {
+      alert("Project is not live yet!");
+    } else {
+      window.open(link, "_blank");
+    }
+  };
 
   return (
     <section
@@ -95,10 +110,11 @@ export default function Works() {
               onClick={() => setActiveCategory(cat)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${activeCategory === cat
+              className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
+                activeCategory === cat
                   ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-md"
                   : "bg-gray-800/80 text-gray-300 hover:text-white hover:bg-gray-700/90 border border-gray-700"
-                }`}
+              }`}
             >
               {cat}
             </motion.button>
@@ -134,17 +150,16 @@ export default function Works() {
                       setExpandedIndex(isExpanded ? null : idx)
                     }
                   >
+                    {/* Image */}
                     <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl mb-6 bg-gray-900">
-  <motion.img
-    src={work.image}
-    alt={work.title}
-    className="absolute inset-0 w-full h-full object-cover"
-    whileHover={{ scale: 1.05 }}
-    transition={{ duration: 0.5 }}
-  />
-</div>
-
-
+                      <motion.img
+                        src={work.image}
+                        alt={work.title}
+                        className="absolute inset-0 w-full h-full object-cover"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.5 }}
+                      />
+                    </div>
 
                     {/* Title */}
                     <h3
@@ -165,6 +180,19 @@ export default function Works() {
                     >
                       {work.desc}
                     </p>
+
+                    {/* Live Link Button */}
+                    <motion.button
+                      onClick={() => handleLiveClick(work.liveLink)}
+                      whileHover={{ scale: 1.1, boxShadow: "0 0 15px rgba(168,85,247,0.7)" }}
+                      whileTap={{ scale: 0.95 }}
+                      className="inline-block mt-3 px-3 py-1.5 text-xs md:text-sm font-semibold text-white 
+                        bg-gradient-to-r from-purple-600 to-blue-600 rounded-full 
+                        shadow-sm hover:shadow-[0_0_15px_rgba(168,85,247,0.7)] 
+                        transition-all duration-300"
+                    >
+                      Live
+                    </motion.button>
                   </motion.div>
                 );
               }

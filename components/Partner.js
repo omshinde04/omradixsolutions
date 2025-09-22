@@ -5,12 +5,12 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const stats = [
-  { value: 100, suffix: "+", label: "Project That We Have Completed" },
-  { value: 1.5, suffix: "+", label: "Year Of Experience" },
-  { value: 50, suffix: "+", label: "The Products We Have Made" },
+  { value: 50, label: "Projects That We Have Completed" },
+  { value: 1, label: "Year Of Experience" },
+  { value: 10, label: "The Products We Have Made" },
 ];
 
-// Count-up hook
+// ✅ Count-up hook
 function useCountUp(target, duration = 2000) {
   const [count, setCount] = useState(0);
   useEffect(() => {
@@ -23,7 +23,7 @@ function useCountUp(target, duration = 2000) {
         setCount(end);
         clearInterval(interval);
       } else {
-        setCount(Number(start.toFixed(1)));
+        setCount(Math.floor(start));
       }
     }, 16);
     return () => clearInterval(interval);
@@ -32,7 +32,7 @@ function useCountUp(target, duration = 2000) {
 }
 
 export default function Partner() {
-  // ✅ Call hooks at the top level for each stat
+  // ✅ Hooks for each stat
   const projectCount = useCountUp(stats[0].value);
   const experienceCount = useCountUp(stats[1].value);
   const productCount = useCountUp(stats[2].value);
@@ -73,7 +73,8 @@ export default function Partner() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Empowering Businesses With Innovative Digital Solutions And Seamless Technology Integration. At OMRADIX Solutions, We Deliver Growth With Creativity And Precision.
+              Empowering Businesses With Innovative Digital Solutions And Seamless Technology
+              Integration. At OMRADIX Solutions, We Deliver Growth With Creativity And Precision.
             </motion.p>
             <motion.p
               className="mt-4 font-semibold"
@@ -87,6 +88,7 @@ export default function Partner() {
 
           {/* Right Stats */}
           <div className="flex flex-row gap-12 lg:justify-end">
+            {/* Projects */}
             <motion.div
               initial={{ opacity: 0, y: 40, scale: 0.8 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -94,10 +96,11 @@ export default function Partner() {
               viewport={{ once: true }}
               className="text-center lg:text-left"
             >
-              <h3 className="text-3xl md:text-4xl font-bold text-[#EEFF04]">{projectCount}+ </h3>
+              <h3 className="text-3xl md:text-4xl font-bold text-[#EEFF04]">{projectCount}+</h3>
               <p className="text-gray-400 mt-2">{stats[0].label}</p>
             </motion.div>
 
+            {/* Experience */}
             <motion.div
               initial={{ opacity: 0, y: 40, scale: 0.8 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -105,10 +108,13 @@ export default function Partner() {
               viewport={{ once: true }}
               className="text-center lg:text-left"
             >
-              <h3 className="text-3xl md:text-4xl font-bold text-[#EEFF04]">{experienceCount}+ </h3>
+              <h3 className="text-3xl md:text-4xl font-bold text-[#EEFF04]">
+                {experienceCount} +
+              </h3>
               <p className="text-gray-400 mt-2">{stats[1].label}</p>
             </motion.div>
 
+            {/* Products */}
             <motion.div
               initial={{ opacity: 0, y: 40, scale: 0.8 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -116,13 +122,11 @@ export default function Partner() {
               viewport={{ once: true }}
               className="text-center lg:text-left"
             >
-              <h3 className="text-3xl md:text-4xl font-bold text-[#EEFF04]">{productCount}+ </h3>
+              <h3 className="text-3xl md:text-4xl font-bold text-[#EEFF04]">{productCount}+</h3>
               <p className="text-gray-400 mt-2">{stats[2].label}</p>
             </motion.div>
           </div>
         </div>
-
-
 
         {/* Bottom Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center font-['Inter']">
@@ -140,7 +144,8 @@ export default function Partner() {
               We Can Show You <br /> A Better Way…
             </h3>
             <p className="mt-4 text-gray-400 leading-relaxed">
-              We Deliver Innovative Solutions Tailored To Your Needs. Our Commitment To Quality And Timely Service Sets Us Apart. With Us, Excellence Isn’t A Promise—It’s A Standard.
+              We Deliver Innovative Solutions Tailored To Your Needs. Our Commitment To Quality And
+              Timely Service Sets Us Apart. With Us, Excellence Isn’t A Promise—It’s A Standard.
             </p>
           </motion.div>
 
