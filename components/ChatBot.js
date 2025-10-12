@@ -123,6 +123,10 @@ export default function ChatBot() {
       setMessages((prev) => [...prev, { sender: "bot", text: reply }]);
     }, 600);
   };
+
+
+
+  
 return (
   <div className="fixed bottom-4 right-4 z-50">
     {/* Toggle Button */}

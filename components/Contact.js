@@ -28,14 +28,13 @@ export default function Contact() {
     setStatusType("info");
 
     try {
-      const res = await fetch("/api", {
+      const res = await fetch("https://formspree.io/f/myznbgkl", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
 
-      const data = await res.json();
-      if (data.success) {
+      if (res.ok) {
         setStatus("✅ Message Sent Successfully!");
         setStatusType("success");
         setForm({ name: "", email: "", message: "" });
@@ -101,7 +100,6 @@ export default function Contact() {
             />
 
             <div className="space-y-2 text-gray-300 text-sm md:text-base flex flex-col gap-1">
-              {/* Phone numbers on the same line */}
               <p className="flex items-center gap-2">
                 📞
                 <a href="tel:+919373545169" className="text-gray-300 ">

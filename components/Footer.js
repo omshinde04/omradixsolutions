@@ -20,7 +20,7 @@ export default function Footer() {
               OMRADIX SOLUTIONS
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed">
-              The future of business is digital © 2024 Omradix Solutions
+              The future of business is digital © 2025 Omradix Solutions
             </p>
             <p className="text-gray-500 text-xs italic mt-2">
               {"Omradix Solutions is a web development & digital growth platform."}

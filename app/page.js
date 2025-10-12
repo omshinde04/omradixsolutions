@@ -9,6 +9,7 @@ import Blogs from "@/components/Blogs";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ChatBot from "@/components/ChatBot";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 export default function Home() {
   return (
@@ -61,6 +62,7 @@ export default function Home() {
       <Contact />
       <Footer />
       <ChatBot />
+      <WhatsAppButton/>
     </>
   );
 }
