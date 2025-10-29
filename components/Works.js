@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Head from "next/head";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Works() {
@@ -12,42 +13,42 @@ export default function Works() {
     {
       title: "MET College Leave Management System",
       image: "/projects/img3.jpeg",
-      desc: "A comprehensive college management system for MET College, Nashik. Includes student and faculty management, attendance tracking, exam results, notifications, and automated alerts for students and staff.",
+      desc: "A comprehensive college management system for MET College, Nashik. Includes student and faculty management, attendance tracking, exam results, notifications, and automated alerts.",
       category: "Management System",
       liveLink: "https://lms-cyan-gamma.vercel.app/",
     },
     {
       title: "MindWell — AI-Powered Wellness Tracker",
       image: "/projects/img4.png",
-      desc: "Designed an AI-driven personal wellness tracker that monitors daily habits, provides health insights, and suggests personalized improvements for better lifestyle balance.",
+      desc: "An AI-driven wellness tracker that monitors daily habits, provides health insights, and suggests personalized improvements for lifestyle balance.",
       category: "AI",
       liveLink: "https://a-iwellness.vercel.app/",
     },
     {
       title: "CertiGen — Automated Certificate Generator",
       image: "/projects/img5.png",
-      desc: "Developed a responsive web application that automates certificate creation based on user input. Designed for efficiency, it generates downloadable certificates instantly with a focus on accuracy, automation, and professional design aesthetics.",
+      desc: "Automated certificate creation platform. Users can instantly generate professional certificates with a responsive design and real-time preview.",
       category: "Automation",
       liveLink: "https://certificate-genertor.vercel.app/",
     },
     {
       title: "Vijay Kalantre — Personal Portfolio Website",
       image: "/projects/img2.png",
-      desc: "Crafted a modern and responsive portfolio website with an elegant gradient theme, showcasing web development and data analytics projects with a vibrant, user-focused design.",
+      desc: "Modern and responsive personal portfolio website built with elegant gradients and dynamic animations showcasing tech expertise.",
       category: "Web",
       liveLink: "#",
     },
     {
       title: "FurniStyle — Modern Furniture E-Commerce",
       image: "/projects/img1.png",
-      desc: "Developed a sleek and responsive furniture e-commerce platform with product catalog, category filters, and secure checkout. Focused on elegant UI/UX and mobile-friendly design.",
+      desc: "Sleek, responsive e-commerce furniture platform featuring product filters, checkout flow, and seamless UI/UX experience.",
       category: "Web",
       liveLink: "#",
     },
     {
       title: "Thread Haus — E-Commerce & Brand Experience",
       image: "/projects/img6.png",
-      desc: "Built a customized online store for Thread Haus Co with a sleek gradient-themed design. Features include upcycled material products, dynamic trending collections, and a strong brand narrative emphasizing sustainability and community impact.",
+      desc: "Custom online store for Thread Haus Co, featuring sustainable fashion products, dynamic collections, and storytelling design.",
       category: "Web",
       liveLink: "https://thread-haus-xi.vercel.app/",
     },
@@ -59,7 +60,6 @@ export default function Works() {
       ? works
       : works.filter((w) => w.category === activeCategory);
 
-  // Function to handle Live button click
   const handleLiveClick = (link) => {
     if (!link || link === "#") {
       alert("Project is not live yet!");
@@ -69,137 +69,194 @@ export default function Works() {
   };
 
   return (
-    <section
-      id="works"
-      className="relative bg-black text-white px-6 py-24 overflow-hidden font-[SF Pro]"
-    >
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-14"
-        >
-          <div>
-            <h2 className="text-3xl md:text-5xl font-extrabold text-white">
-              Our Works & Projects
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full mt-3 animate-pulse"></div>
-            <p className="text-sm md:text-lg text-gray-400 mt-4">
-              Showcasing Innovation & Excellence 🚀
-            </p>
-          </div>
-          <motion.button
-            whileHover={{ scale: 1.08 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setShowAll(!showAll)}
-            className="mt-6 sm:mt-0 px-6 py-2 text-sm md:text-base font-medium text-white 
-              bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg shadow-md 
-              hover:shadow-[0_0_25px_rgba(139,92,246,0.8)] transition-all duration-500"
+    <>
+      {/* ✅ SEO & Structured Data */}
+      <Head>
+        <title>Our Works & Projects | omradixsolutions</title>
+        <meta
+          name="description"
+          content="Explore omradixsolutions' portfolio — modern web, AI, and automation projects. Showcasing innovation in web development, e-commerce, and digital solutions."
+        />
+        <meta
+          name="keywords"
+          content="omradixsolutions projects, web development portfolio, AI projects, e-commerce websites, automation tools, IT solutions, Next.js projects"
+        />
+        <meta name="author" content="omradixsolutions" />
+        <meta property="og:title" content="Our Works & Projects | omradixsolutions" />
+        <meta
+          property="og:description"
+          content="Discover innovative projects by omradixsolutions — AI tools, automation apps, and web development case studies."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.omradixsolutions.in/#works" />
+        <meta property="og:image" content="https://www.omradixsolutions.in/og-image.jpg" />
+        <link rel="canonical" href="https://www.omradixsolutions.in/#works" />
+
+        {/* JSON-LD Structured Data for Projects */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ItemList",
+              name: "omradixsolutions Projects",
+              description:
+                "List of projects developed by omradixsolutions including AI, automation, and web solutions.",
+              url: "https://www.omradixsolutions.in/#works",
+              itemListElement: works.map((work, index) => ({
+                "@type": "CreativeWork",
+                position: index + 1,
+                name: work.title,
+                image: `https://www.omradixsolutions.in${work.image}`,
+                url: work.liveLink,
+                description: work.desc,
+                genre: work.category,
+                creator: {
+                  "@type": "Organization",
+                  name: "omradixsolutions",
+                  url: "https://www.omradixsolutions.in",
+                },
+              })),
+            }),
+          }}
+        />
+      </Head>
+
+      {/* ✅ Works Section */}
+      <section
+        id="works"
+        className="relative bg-black text-white px-6 py-24 overflow-hidden font-[SF Pro]"
+      >
+        <div className="max-w-7xl mx-auto relative z-10">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-14"
           >
-            {showAll ? "View Less" : "View All"}
-          </motion.button>
-        </motion.div>
-
-        {/* Category Filter */}
-        <div className="flex flex-wrap gap-4 mb-10">
-          {categories.map((cat) => (
+            <div>
+              <h2 className="text-3xl md:text-5xl font-extrabold text-white">
+                Our Works & Projects
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full mt-3 animate-pulse"></div>
+              <p className="text-sm md:text-lg text-gray-400 mt-4">
+                Showcasing Innovation & Excellence 🚀
+              </p>
+            </div>
             <motion.button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
-                activeCategory === cat
-                  ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-md"
-                  : "bg-gray-800/80 text-gray-300 hover:text-white hover:bg-gray-700/90 border border-gray-700"
-              }`}
+              onClick={() => setShowAll(!showAll)}
+              className="mt-6 sm:mt-0 px-6 py-2 text-sm md:text-base font-medium text-white 
+                bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg shadow-md 
+                hover:shadow-[0_0_25px_rgba(139,92,246,0.8)] transition-all duration-500"
             >
-              {cat}
+              {showAll ? "View Less" : "View All"}
             </motion.button>
-          ))}
-        </div>
+          </motion.div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-          <AnimatePresence>
-            {(showAll ? filteredWorks : filteredWorks.slice(0, 3)).map(
-              (work, idx) => {
-                const isExpanded = expandedIndex === idx;
+          {/* Category Filter */}
+          <div className="flex flex-wrap gap-4 mb-10">
+            {categories.map((cat) => (
+              <motion.button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label={`Filter projects by ${cat}`}
+                className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
+                  activeCategory === cat
+                    ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-md"
+                    : "bg-gray-800/80 text-gray-300 hover:text-white hover:bg-gray-700/90 border border-gray-700"
+                }`}
+              >
+                {cat}
+              </motion.button>
+            ))}
+          </div>
 
-                return (
-                  <motion.div
-                    key={work.title}
-                    initial={{ opacity: 0, y: 80 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{
-                      duration: 0.8,
-                      delay: idx * 0.15,
-                      type: "spring",
-                    }}
-                    whileHover={{ y: -10, rotate: 0.5 }}
-                    whileTap={{ scale: 0.98 }}
-                    className={`relative group bg-[#1D1D1F]/90 backdrop-blur-md p-6 rounded-2xl 
-                      border transition-all duration-500 cursor-pointer
-                      ${isExpanded
-                        ? "border-transparent shadow-[0_0_35px_rgba(139,92,246,0.6)]"
-                        : "border-gray-800 hover:border-transparent hover:shadow-[0_0_35px_rgba(139,92,246,0.6)]"
-                      }`}
-                    onClick={() =>
-                      setExpandedIndex(isExpanded ? null : idx)
-                    }
-                  >
-                    {/* Image */}
-                    <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl mb-6 bg-gray-900">
-                      <motion.img
-                        src={work.image}
-                        alt={work.title}
-                        className="absolute inset-0 w-full h-full object-cover"
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ duration: 0.5 }}
-                      />
-                    </div>
+          {/* Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            <AnimatePresence>
+              {(showAll ? filteredWorks : filteredWorks.slice(0, 3)).map(
+                (work, idx) => {
+                  const isExpanded = expandedIndex === idx;
 
-                    {/* Title */}
-                    <h3
-                      className={`text-xl font-semibold mb-3 transition
-                        group-hover:text-purple-400 
-                        ${isExpanded ? "text-purple-400" : ""}`}
-                    >
-                      {work.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p
-                      className={`text-gray-400 text-sm md:text-base leading-relaxed transition-all duration-300
+                  return (
+                    <motion.article
+                      key={work.title}
+                      initial={{ opacity: 0, y: 80 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{
+                        duration: 0.8,
+                        delay: idx * 0.15,
+                        type: "spring",
+                      }}
+                      whileHover={{ y: -10, rotate: 0.5 }}
+                      whileTap={{ scale: 0.98 }}
+                      className={`relative group bg-[#1D1D1F]/90 backdrop-blur-md p-6 rounded-2xl 
+                        border transition-all duration-500 cursor-pointer
                         ${isExpanded
-                          ? "line-clamp-none"
-                          : "line-clamp-3 group-hover:line-clamp-none"
+                          ? "border-transparent shadow-[0_0_35px_rgba(139,92,246,0.6)]"
+                          : "border-gray-800 hover:border-transparent hover:shadow-[0_0_35px_rgba(139,92,246,0.6)]"
                         }`}
+                      onClick={() =>
+                        setExpandedIndex(isExpanded ? null : idx)
+                      }
                     >
-                      {work.desc}
-                    </p>
+                      <figure className="relative w-full aspect-[4/3] overflow-hidden rounded-xl mb-6 bg-gray-900">
+                        <motion.img
+                          src={work.image}
+                          alt={`${work.title} - ${work.category} project by omradixsolutions`}
+                          className="absolute inset-0 w-full h-full object-cover"
+                          whileHover={{ scale: 1.05 }}
+                          transition={{ duration: 0.5 }}
+                          loading="lazy"
+                        />
+                      </figure>
 
-                    {/* Live Link Button */}
-                    <motion.button
-                      onClick={() => handleLiveClick(work.liveLink)}
-                      whileHover={{ scale: 1.1, boxShadow: "0 0 15px rgba(168,85,247,0.7)" }}
-                      whileTap={{ scale: 0.95 }}
-                      className="inline-block mt-3 px-3 py-1.5 text-xs md:text-sm font-semibold text-white 
-                        bg-gradient-to-r from-purple-600 to-blue-600 rounded-full 
-                        shadow-sm hover:shadow-[0_0_15px_rgba(168,85,247,0.7)] 
-                        transition-all duration-300"
-                    >
-                      Live
-                    </motion.button>
-                  </motion.div>
-                );
-              }
-            )}
-          </AnimatePresence>
+                      <h3
+                        className={`text-xl font-semibold mb-3 transition
+                          group-hover:text-purple-400 
+                          ${isExpanded ? "text-purple-400" : ""}`}
+                      >
+                        {work.title}
+                      </h3>
+
+                      <p
+                        className={`text-gray-400 text-sm md:text-base leading-relaxed transition-all duration-300
+                          ${isExpanded
+                            ? "line-clamp-none"
+                            : "line-clamp-3 group-hover:line-clamp-none"
+                          }`}
+                      >
+                        {work.desc}
+                      </p>
+
+                      <motion.button
+                        onClick={() => handleLiveClick(work.liveLink)}
+                        whileHover={{
+                          scale: 1.1,
+                          boxShadow: "0 0 15px rgba(168,85,247,0.7)",
+                        }}
+                        whileTap={{ scale: 0.95 }}
+                        className="inline-block mt-3 px-3 py-1.5 text-xs md:text-sm font-semibold text-white 
+                          bg-gradient-to-r from-purple-600 to-blue-600 rounded-full 
+                          shadow-sm hover:shadow-[0_0_15px_rgba(168,85,247,0.7)] 
+                          transition-all duration-300"
+                        aria-label={`Visit live link for ${work.title}`}
+                      >
+                        Live
+                      </motion.button>
+                    </motion.article>
+                  );
+                }
+              )}
+            </AnimatePresence>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
