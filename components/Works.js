@@ -10,6 +10,16 @@ export default function Works() {
   const [activeCategory, setActiveCategory] = useState("All");
 
   const works = [
+    // 🔥 NEW PROJECT – ADDED AT TOP
+    {
+      title: "PhishScan — AI-Based Phishing Detection System",
+      image: "/projects/img7.png", // make sure image exists
+      desc: "PhishScan is a fully developed AI-powered phishing detection system that performs deep analysis of emails by evaluating sender and recipient details, embedded URLs, subject lines, email headers (mailed-by, signed-by), security warnings, attachments, and the complete email body. The system correlates multiple signals to detect phishing, spoofing, and social engineering attacks. The application is fully functional, with the frontend deployed and the backend AI analysis engine ready and pending deployment.",
+      category: "AI",
+      liveLink: "https://phishscan.vercel.app/",
+      status: "Frontend Live · Backend In Progress",
+    },
+
     {
       title: "MET College Leave Management System",
       image: "/projects/img3.jpeg",
@@ -54,7 +64,15 @@ export default function Works() {
     },
   ];
 
-  const categories = ["All", "Web", "AI", "Mobile", "Management System", "Automation"];
+  const categories = [
+    "All",
+    "Web",
+    "AI",
+    "Mobile",
+    "Management System",
+    "Automation",
+  ];
+
   const filteredWorks =
     activeCategory === "All"
       ? works
@@ -70,56 +88,14 @@ export default function Works() {
 
   return (
     <>
-      {/* ✅ SEO & Structured Data */}
+      {/* ✅ SEO */}
       <Head>
         <title>Our Works & Projects | omradixsolutions</title>
         <meta
           name="description"
-          content="Explore omradixsolutions' portfolio — modern web, AI, and automation projects. Showcasing innovation in web development, e-commerce, and digital solutions."
+          content="Explore omradixsolutions' portfolio — modern web, AI, and automation projects including PhishScan, an AI-based phishing detection system."
         />
-        <meta
-          name="keywords"
-          content="omradixsolutions projects, web development portfolio, AI projects, e-commerce websites, automation tools, IT solutions, Next.js projects"
-        />
-        <meta name="author" content="omradixsolutions" />
-        <meta property="og:title" content="Our Works & Projects | omradixsolutions" />
-        <meta
-          property="og:description"
-          content="Discover innovative projects by omradixsolutions — AI tools, automation apps, and web development case studies."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.omradixsolutions.in/#works" />
-        <meta property="og:image" content="https://www.omradixsolutions.in/og-image.jpg" />
         <link rel="canonical" href="https://www.omradixsolutions.in/#works" />
-
-        {/* JSON-LD Structured Data for Projects */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "ItemList",
-              name: "omradixsolutions Projects",
-              description:
-                "List of projects developed by omradixsolutions including AI, automation, and web solutions.",
-              url: "https://www.omradixsolutions.in/#works",
-              itemListElement: works.map((work, index) => ({
-                "@type": "CreativeWork",
-                position: index + 1,
-                name: work.title,
-                image: `https://www.omradixsolutions.in${work.image}`,
-                url: work.liveLink,
-                description: work.desc,
-                genre: work.category,
-                creator: {
-                  "@type": "Organization",
-                  name: "omradixsolutions",
-                  url: "https://www.omradixsolutions.in",
-                },
-              })),
-            }),
-          }}
-        />
       </Head>
 
       {/* ✅ Works Section */}
@@ -136,21 +112,20 @@ export default function Works() {
             className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-14"
           >
             <div>
-              <h2 className="text-3xl md:text-5xl font-extrabold text-white">
+              <h2 className="text-3xl md:text-5xl font-extrabold">
                 Our Works & Projects
               </h2>
               <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full mt-3 animate-pulse"></div>
-              <p className="text-sm md:text-lg text-gray-400 mt-4">
-                Showcasing Innovation & Excellence 🚀
+              <p className="text-gray-400 mt-4">
+                Showcasing Innovation & Real-World Solutions 🚀
               </p>
             </div>
+
             <motion.button
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setShowAll(!showAll)}
-              className="mt-6 sm:mt-0 px-6 py-2 text-sm md:text-base font-medium text-white 
-                bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg shadow-md 
-                hover:shadow-[0_0_25px_rgba(139,92,246,0.8)] transition-all duration-500"
+              className="mt-6 sm:mt-0 px-6 py-2 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg"
             >
               {showAll ? "View Less" : "View All"}
             </motion.button>
@@ -159,20 +134,17 @@ export default function Works() {
           {/* Category Filter */}
           <div className="flex flex-wrap gap-4 mb-10">
             {categories.map((cat) => (
-              <motion.button
+              <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                aria-label={`Filter projects by ${cat}`}
-                className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
+                className={`px-5 py-2 rounded-full text-sm transition-all ${
                   activeCategory === cat
-                    ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-md"
-                    : "bg-gray-800/80 text-gray-300 hover:text-white hover:bg-gray-700/90 border border-gray-700"
+                    ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white"
+                    : "bg-gray-800 text-gray-300 hover:bg-gray-700"
                 }`}
               >
                 {cat}
-              </motion.button>
+              </button>
             ))}
           </div>
 
@@ -188,67 +160,43 @@ export default function Works() {
                       key={work.title}
                       initial={{ opacity: 0, y: 80 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      transition={{
-                        duration: 0.8,
-                        delay: idx * 0.15,
-                        type: "spring",
-                      }}
-                      whileHover={{ y: -10, rotate: 0.5 }}
-                      whileTap={{ scale: 0.98 }}
-                      className={`relative group bg-[#1D1D1F]/90 backdrop-blur-md p-6 rounded-2xl 
-                        border transition-all duration-500 cursor-pointer
-                        ${isExpanded
-                          ? "border-transparent shadow-[0_0_35px_rgba(139,92,246,0.6)]"
-                          : "border-gray-800 hover:border-transparent hover:shadow-[0_0_35px_rgba(139,92,246,0.6)]"
-                        }`}
+                      transition={{ duration: 0.6, delay: idx * 0.1 }}
+                      className="bg-[#1D1D1F]/90 p-6 rounded-2xl border border-gray-800 hover:shadow-[0_0_30px_rgba(139,92,246,0.6)] transition-all cursor-pointer"
                       onClick={() =>
                         setExpandedIndex(isExpanded ? null : idx)
                       }
                     >
-                      <figure className="relative w-full aspect-[4/3] overflow-hidden rounded-xl mb-6 bg-gray-900">
-                        <motion.img
-                          src={work.image}
-                          alt={`${work.title} - ${work.category} project by omradixsolutions`}
-                          className="absolute inset-0 w-full h-full object-cover"
-                          whileHover={{ scale: 1.05 }}
-                          transition={{ duration: 0.5 }}
-                          loading="lazy"
-                        />
-                      </figure>
+                      <img
+                        src={work.image}
+                        alt={work.title}
+                        className="rounded-xl mb-5 w-full h-44 object-cover"
+                        loading="lazy"
+                      />
 
-                      <h3
-                        className={`text-xl font-semibold mb-3 transition
-                          group-hover:text-purple-400 
-                          ${isExpanded ? "text-purple-400" : ""}`}
-                      >
+                      <h3 className="text-xl font-semibold text-purple-400">
                         {work.title}
                       </h3>
 
+                      {work.status && (
+                        <p className="text-xs text-yellow-400 mt-1">
+                          {work.status}
+                        </p>
+                      )}
+
                       <p
-                        className={`text-gray-400 text-sm md:text-base leading-relaxed transition-all duration-300
-                          ${isExpanded
-                            ? "line-clamp-none"
-                            : "line-clamp-3 group-hover:line-clamp-none"
-                          }`}
+                        className={`text-gray-400 mt-3 text-sm ${
+                          isExpanded ? "" : "line-clamp-3"
+                        }`}
                       >
                         {work.desc}
                       </p>
 
-                      <motion.button
+                      <button
                         onClick={() => handleLiveClick(work.liveLink)}
-                        whileHover={{
-                          scale: 1.1,
-                          boxShadow: "0 0 15px rgba(168,85,247,0.7)",
-                        }}
-                        whileTap={{ scale: 0.95 }}
-                        className="inline-block mt-3 px-3 py-1.5 text-xs md:text-sm font-semibold text-white 
-                          bg-gradient-to-r from-purple-600 to-blue-600 rounded-full 
-                          shadow-sm hover:shadow-[0_0_15px_rgba(168,85,247,0.7)] 
-                          transition-all duration-300"
-                        aria-label={`Visit live link for ${work.title}`}
+                        className="mt-4 px-4 py-1.5 text-sm bg-gradient-to-r from-purple-600 to-blue-600 rounded-full"
                       >
                         Live
-                      </motion.button>
+                      </button>
                     </motion.article>
                   );
                 }
